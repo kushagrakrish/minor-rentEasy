@@ -11,7 +11,7 @@ const Footer = () => {
         <p>RentEasy Plus</p>
         <p>RentEasy Luxe</p>
       </div>
-      <div className='space-y-4 text-xs text-gray-800'>
+      <div className='space-y-4 text-sm text-gray-800'>
         <h5 className='font-bold'>COMMUNITY</h5>
         <p>How RentEasy works</p>
         <p>Newsroom</p>
@@ -19,7 +19,7 @@ const Footer = () => {
         <p>RentEasy Plus</p>
         <p>RentEasy Luxe</p>
       </div>
-      <div className='space-y-4 text-xs text-gray-800'>
+      <div className='space-y-4 text-sm text-gray-800'>
         <h5 className='font-bold'>HOST</h5>
         <p>How RentEasy works</p>
         <p>Newsroom</p>
@@ -28,7 +28,7 @@ const Footer = () => {
         <p>RentEasy Luxe</p>
       </div>
 
-      <div className='space-y-4 text-xs text-gray-800'>
+      <div className='space-y-4 text-sm text-gray-800'>
         <h5 className='font-bold'>SUPPORT</h5>
         <p>How RentEasy works</p>
         <p>Newsroom</p>

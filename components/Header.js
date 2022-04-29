@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   SearchIcon,
@@ -11,13 +11,21 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { authentication } from "./Firebase/Firebase";
 
 function Header({ placeholder }) {
+  const [user] = useAuthState(authentication);
+
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noOfGuest, setNoOfGuest] = useState(1);
   const router = useRouter();
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
@@ -51,12 +59,12 @@ function Header({ placeholder }) {
         onClick={() => router.push("/")}
         className='relative flex item-center h-10 my-auto cursor-pointer'
       >
-        <Image
+        {/* <Image
           src='https://links.papareact.com/qd3'
           layout='fill'
           objectFit='contain'
           objectPosition='left'
-        />
+        /> */}
       </div>
 
       {/* Middle Div */}
@@ -67,17 +75,26 @@ function Header({ placeholder }) {
           type='text'
           placeholder={placeholder || "Start your search"}
           className='flex-grow pl-4 outline-none'
+          ref={inputRef}
         />
         <SearchIcon className='hidden md:inline-flex h-8  bg-red-400 text-white rounded-full p-1 cursor-pointer md:mx-2' />
       </div>
 
       <div className='flex space-x-4 items-center justify-end text-gray-500'>
-        <p className='hidden md:inline cursor-pointer'>Become a host</p>
+        <p
+          className='hidden md:inline cursor-pointer'
+          onClick={() => router.push("/Signup")}
+        >
+          Become a member
+        </p>
         <GlobeAltIcon className='h-6' />
 
         <div className='flex items-center space-x-2 border-2 p-2 rounded-full'>
           <MenuIcon className='h-6' />
-          <UserCircleIcon className='h-6' />
+          <UserCircleIcon
+            className='h-6 cursor-pointer'
+            onClick={() => authentication.signOut()}
+          />
         </div>
       </div>
       {searchInput && (

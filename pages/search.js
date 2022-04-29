@@ -4,15 +4,16 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
+import Maps from "../components/Maps";
 
 const search = (props) => {
   const { searchResults } = props;
   const router = useRouter();
-  console.log(searchResults);
+  // console.log(searchResults);
   const { location, startDate, endDate, noOfGuest } = router.query;
 
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  console.log(formattedStartDate);
+  // console.log(formattedStartDate);
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate}-${formattedEndDate}`;
   return (
@@ -37,6 +38,7 @@ const search = (props) => {
             {searchResults?.map(
               ({ img, location, title, description, star, price, total }) => (
                 <InfoCard
+                  key={img}
                   img={img}
                   location={location}
                   description={description}
@@ -48,6 +50,9 @@ const search = (props) => {
               )
             )}
           </div>
+        </section>
+        <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+          <Maps searchResults={searchResults} />
         </section>
       </main>
       <Footer />
