@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 import Maps from "../components/Maps";
 
-const search = (props) => {
+const Search = (props) => {
   const { searchResults } = props;
   const router = useRouter();
   // console.log(searchResults);
@@ -60,7 +60,7 @@ const search = (props) => {
   );
 };
 
-export default search;
+export default Search;
 
 export async function getServerSideProps() {
   const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
