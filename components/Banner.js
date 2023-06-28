@@ -12,7 +12,7 @@ const Banner = ({ inputRef }) => {
       <div className='absolute text-center w-full top-1/2'>
         <p className='text-sm sm:text-lg'>Not sure where to go? Perfect</p>
         <button className='text-purple-500 bg-white rounded-full p-7 py-4 shadow-md mt-3 font-bold hover:shadow-xl active:scale-90 transition duration-150'>
-          I'm Flexible
+          I am Flexible
         </button>
       </div>
     </div>

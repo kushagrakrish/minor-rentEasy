@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import {
   SearchIcon,
   MenuIcon,
   UserCircleIcon,
   UserIcon,
   GlobeAltIcon,
+  LogoutIcon,
 } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -16,6 +16,7 @@ import { authentication } from "./Firebase/Firebase";
 
 function Header({ placeholder }) {
   const [user] = useAuthState(authentication);
+  console.log(user);
 
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
@@ -85,16 +86,20 @@ function Header({ placeholder }) {
           className='hidden md:inline cursor-pointer'
           onClick={() => router.push("/Signup")}
         >
-          Become a member
+          {user ? "Welcome Kushagra" : "Logout"}
         </p>
         <GlobeAltIcon className='h-6' />
 
         <div className='flex items-center space-x-2 border-2 p-2 rounded-full'>
           <MenuIcon className='h-6' />
-          <UserCircleIcon
-            className='h-6 cursor-pointer'
-            onClick={() => authentication.signOut()}
-          />
+          {!user ? (
+            <UserCircleIcon className='h-6 cursor-pointer' />
+          ) : (
+            <LogoutIcon
+              className='h-6 cursor-pointer'
+              onClick={(user) => authentication.signOut(user)}
+            />
+          )}
         </div>
       </div>
       {searchInput && (
