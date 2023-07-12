@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Banner from "../components/Banner";
 import { authentication } from "../components/Firebase/Firebase";
 import Footer from "../components/Footer";
@@ -6,8 +7,7 @@ import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
-import { useAuthState } from "react-firebase-hooks/auth";
-import SignUp from "./SignUp";
+import SignUp from "./SignIn";
 
 export default function Home({ exploreData, cardsData }) {
   const [user, loading] = useAuthState(authentication);
