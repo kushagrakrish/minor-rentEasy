@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
-import SignUp from "./SignIn";
+import SignIn from "./SignIn";
 
 export default function Home({ exploreData, cardsData }) {
   const [user, loading] = useAuthState(authentication);
@@ -15,7 +15,7 @@ export default function Home({ exploreData, cardsData }) {
   return (
     <div className=''>
       {!user ? (
-        <SignUp />
+        <SignIn />
       ) : (
         <>
           <Head>

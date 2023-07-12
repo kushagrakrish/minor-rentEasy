@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { authentication, provider } from "../components/Firebase/Firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-const SignUp = () => {
+const SignIn = () => {
   const LogIn = (e) => {
     const provider = new GoogleAuthProvider();
 
@@ -29,7 +29,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
 const LoginInnerContainer = styled.div`
   > img {
     object-fit: contain;
